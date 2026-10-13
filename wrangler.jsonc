@@ -4,9 +4,18 @@
   "main": ".output/server/index.mjs",
   "compatibility_date": "2026-10-13",
   "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "preview_urls": true,
+  "routes": [
+    {
+      "pattern": "callnightowls.com",
+      "custom_domain": true
+    }
+  ],
   "assets": {
     "directory": ".output/public",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*", "/*"]
   },
   "observability": {
     "enabled": true
