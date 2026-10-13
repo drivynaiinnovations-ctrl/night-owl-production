@@ -10,6 +10,10 @@
     {
       "pattern": "callnightowls.com",
       "custom_domain": true
+    },
+    {
+      "pattern": "www.callnightowls.com",
+      "custom_domain": true
     }
   ],
   "assets": {
