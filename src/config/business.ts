@@ -5,7 +5,7 @@ export const business = {
   email: 'happy@callnightowls.com',
   serviceArea: 'DMV area',
   hours: '8:00 AM–6:00 PM',
-  siteUrl: '',
+  siteUrl: 'https://callnightowls.com',
 };
 export const configured = (value: string) => Boolean(value.trim()) && !value.includes('[');
 export const phoneHref = () => configured(business.phone) && /^\+?[\d\s().-]{7,25}$/.test(business.phone) ? `tel:${business.phone.replace(/[^\d+]/g, '')}` : undefined;
