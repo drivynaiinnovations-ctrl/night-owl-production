@@ -1,22 +1,19 @@
-// New-request email alert through Cloudflare Email Routing. Skipped unless NOTIFY_TO is set to a verified destination.
-import { EmailMessage } from 'cloudflare:email';
+// New-request email alert through the Cloudflare Email Service send_email binding.
+// Failures are logged and never block saving the request.
 import type { Bindings } from './cloudflare';
 
-const header = (value: string) => value.replace(/[\r\n]+/g, ' ');
+const esc = (value: string) => value.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
 
-export async function notifyNewRequest(env: Bindings, subject: string, body: string) {
+export async function notifyNewRequest(env: Bindings, subject: string, body: string, replyTo?: string) {
  if (!env.NOTIFY || !env.NOTIFY_TO || !env.NOTIFY_FROM) return;
- const raw = [
-  `From: Night Owls Website <${env.NOTIFY_FROM}>`,
-  `To: ${env.NOTIFY_TO}`,
-  `Subject: ${header(subject)}`,
-  `Message-ID: <${crypto.randomUUID()}@callnightowls.com>`,
-  `Date: ${new Date().toUTCString()}`,
-  'MIME-Version: 1.0',
-  'Content-Type: text/plain; charset=utf-8',
-  '',
-  body,
- ].join('\r\n');
- try { await env.NOTIFY.send(new EmailMessage(env.NOTIFY_FROM, env.NOTIFY_TO, raw)); }
- catch (error) { console.error('Request notification failed', error); }
+ try {
+  await env.NOTIFY.send({
+   to: env.NOTIFY_TO,
+   from: { email: env.NOTIFY_FROM, name: 'Night Owls Website' },
+   ...(replyTo ? { replyTo } : {}),
+   subject: subject.replace(/[\r\n]+/g, ' '),
+   text: body,
+   html: `<pre style="font:14px/1.6 system-ui,sans-serif;white-space:pre-wrap">${esc(body)}</pre>`,
+  });
+ } catch (error) { console.error('Request notification failed', error); }
 }

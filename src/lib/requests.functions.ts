@@ -30,7 +30,7 @@ export const submitRequest = createServerFn({method:'POST'})
     `Service: ${service}`, `Urgency: ${r.urgency}`, `Preferred date: ${preferred_date || 'none'}`,
     `Address: ${r.service_address}, ${r.city}, ${r.state} ${r.zip}`, '', r.description, '',
     `Photos: ${photos.length}`, `View: https://callnightowls.com/admin/requests/${id}`,
-   ].join('\n'));
+   ].join('\n'), r.email);
    return {ok:true as const,reference:id};
   } catch (error) {
    console.error('Service request failed', error);

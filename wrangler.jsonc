@@ -29,10 +29,10 @@
       "migrations_dir": "migrations"
     }
   ],
-  // Optional new-request alerts via Cloudflare Email Routing. Set NOTIFY_TO to a verified destination address.
+  // New-request email alerts. NOTIFY_FROM must use a domain enabled for Cloudflare Email Sending.
   "send_email": [{ "name": "NOTIFY" }],
   "vars": {
-    "NOTIFY_TO": "",
+    "NOTIFY_TO": "happy@callnightowls.com",
     "NOTIFY_FROM": "requests@callnightowls.com"
   },
   "observability": {
