@@ -29,10 +29,10 @@
       "migrations_dir": "migrations"
     }
   ],
-  // New-request email alerts. NOTIFY_FROM must use a domain enabled for Cloudflare Email Sending.
+  // New-request email alerts. NOTIFY_TO must be a verified Email Routing destination (happy@ forwards to this inbox).
   "send_email": [{ "name": "NOTIFY" }],
   "vars": {
-    "NOTIFY_TO": "happy@callnightowls.com",
+    "NOTIFY_TO": "getnightowls@gmail.com",
     "NOTIFY_FROM": "requests@callnightowls.com"
   },
   "observability": {
