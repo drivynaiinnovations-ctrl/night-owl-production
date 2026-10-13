@@ -1,0 +1,21 @@
+import doors from '@/assets/commercial-doors.jpg';
+import property from '@/assets/night-property.jpg';
+import cleaning from '@/assets/exterior-cleaning.jpg';
+import parking from '@/assets/parking-lot.jpg';
+import { DoorOpen, Signpost, Droplets, ParkingSquare } from 'lucide-react';
+export const services = [
+ { slug: 'commercial-doors', value: 'doors', title: 'Commercial Door Services', short: 'Commercial doors', icon: DoorOpen, image: doors, alt: 'Commercial glass entrance with metal handles and door closers', summary: 'Keep entrances working. Keep business moving.', description: 'Repairs, adjustments, installations, and preventive maintenance for the doors your business depends on.', items: ['Door repairs and adjustments','New door installations','Closers, hinges, and locks','Panic hardware','Storefront entrances','Preventive maintenance'], detail: 'A sticking entrance, worn closer, or damaged hinge can interrupt daily operations. We coordinate the right service professionals for your commercial doors, with a clear scope and one point of contact.' },
+ { slug: 'commercial-signage', value: 'signage', title: 'Commercial Signage', short: 'Commercial signage', icon: Signpost, image: property, alt: 'Illuminated exterior sign area above a commercial storefront', summary: 'Make the right impression. In every location.', description: 'Installation, replacement, and removal of the signage that helps customers find their way.', items: ['Sign installation and replacement','Sign removal','Directional signage','Window graphics','Exterior signs','Multi-location rollouts'], detail: 'From updated window graphics to a coordinated exterior sign rollout, we help organize the installation details, site requirements, and service professionals across your locations.' },
+ { slug: 'exterior-cleaning', value: 'exterior-cleaning', title: 'Exterior Cleaning', short: 'Exterior cleaning', icon: Droplets, image: cleaning, alt: 'Pressure washing a concrete sidewalk outside a commercial entrance', summary: 'A cleaner property. A better first impression.', description: 'Purposeful cleaning for high-traffic commercial exteriors, from entries to dumpster pads.', items: ['Pressure washing','Sidewalks and entries','Dumpster pads','Gum and graffiti removal','Awning cleaning','Sign cleaning'], detail: 'Daily foot traffic and exposure leave their mark. We coordinate surface-appropriate exterior cleaning around your property needs, access requirements, and operating schedule.' },
+ { slug: 'parking-lot-care', value: 'parking-lot-care', title: 'Parking-Lot Care', short: 'Parking-lot care', icon: ParkingSquare, image: parking, alt: 'Clean commercial parking lot with clear markings, wheel stops, and bollards', summary: 'Care that starts before the front door.', description: 'Scheduled sweeping, clear markings, and practical upkeep for commercial parking areas.', items: ['Scheduled sweeping','Litter pickup','Parking-lot striping','ADA markings','Bollards and wheel stops','Minor upkeep'], detail: 'Parking areas are part of the customer experience. We coordinate one-time improvements and recurring care, with attention to traffic, site access, and the scope of your property.' },
+] as const;
+export const industries = [
+ ['Property & facility management','Coordinate maintenance across tenants, buildings, and busy schedules.'],
+ ['Retail & restaurants','Keep entrances, signs, and customer-facing spaces ready for business.'],
+ ['Commercial landlords','Manage turnovers, common areas, and ongoing property care.'],
+ ['Offices & warehouses','Maintain working entrances and practical, clean exterior spaces.'],
+ ['Contractors','Coordinate commercial service needs alongside your project scope.'],
+ ['Franchise & multi-location','Bring a consistent point of contact to work across multiple sites.'],
+];
+export const process = [ ['Tell us what you need','Share the property, the issue, and the scope. Photos help us understand the job.'], ['We coordinate the right crew','We align the service professionals, access details, and work requirements.'], ['The work gets handled','Your point of contact keeps communication clear from coordination through completion.'] ];
+export const publicPaths = ['/', '/services', ...services.map(s => `/services/${s.slug}`), '/industries', '/about', '/request-service', '/contact', '/privacy', '/terms'];
