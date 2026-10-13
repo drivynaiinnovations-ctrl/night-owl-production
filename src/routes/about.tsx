@@ -1,4 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { AboutPage } from '@/components/site/content-pages';
-import { pageHead } from '@/lib/seo';
-export const Route = createFileRoute('/about')({head:()=>pageHead('About Night Owls','Meet Night Owls Service: one accountable point of contact coordinating vetted professionals for commercial property services.','/about'),component:AboutPage});
+import { pageHead, breadcrumbSchema, jsonLd } from '@/lib/seo';
+export const Route = createFileRoute('/about')({head:()=>({...pageHead('About Night Owls Service','Night Owls Service gives DC-area commercial properties one accountable point of contact for door repair, signage, exterior cleaning, and parking-lot care.','/about'),scripts:jsonLd(breadcrumbSchema([['About','/about']]))}),component:AboutPage});

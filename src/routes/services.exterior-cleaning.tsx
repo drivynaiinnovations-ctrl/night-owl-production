@@ -1,4 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { ServicePage } from '@/components/site/content-pages';
-import { pageHead, serviceSchema } from '@/lib/seo';
-export const Route = createFileRoute('/services/exterior-cleaning')({head:()=>({...pageHead('Exterior Cleaning','Commercial pressure washing, sidewalk cleaning, dumpster pads, gum and graffiti removal, awnings, and sign cleaning.','/services/exterior-cleaning'),scripts:[{type:'application/ld+json',children:JSON.stringify(serviceSchema('Exterior Cleaning','Commercial pressure washing, sidewalk cleaning, dumpster pads, gum and graffiti removal, awnings, and sign cleaning.'))}]}),component:()=> <ServicePage slug="exterior-cleaning"/>});
+import { pageHead, serviceSchema, breadcrumbSchema, jsonLd } from '@/lib/seo';
+const path = '/services/exterior-cleaning';
+const description = 'Commercial pressure washing for sidewalks, entries, dumpster pads, awnings, and signs, plus gum and graffiti removal, for properties in Washington DC, Maryland, and Northern Virginia.';
+export const Route = createFileRoute('/services/exterior-cleaning')({head:()=>({...pageHead('Commercial Pressure Washing & Exterior Cleaning | DC, MD, VA',description,path),scripts:jsonLd(serviceSchema('Exterior Cleaning',description,path),breadcrumbSchema([['Services','/services'],['Exterior Cleaning',path]]))}),component:()=> <ServicePage slug="exterior-cleaning"/>});

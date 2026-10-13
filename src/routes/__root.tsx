@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 
 import { SiteShell } from '@/components/site/shell';
 import { Button } from '@/components/ui/button';
+import { business } from '@/config/business';
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
@@ -82,7 +83,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { property: "og:site_name", content: "Night Owls Service" },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "theme-color", content: "#ffffff" },
+      { name: "format-detection", content: "telephone=yes" },
+      { name: "geo.region", content: "US-DC" },
+      { name: "geo.placename", content: "Washington, DC" },
+      ...(business.googleSiteVerification ? [{ name: "google-site-verification", content: business.googleSiteVerification }] : []),
     ],
     links: [
       {
@@ -90,7 +97,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "icon", href: "/favicon-48.png", type: "image/png", sizes: "48x48" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
     ],
+    scripts: business.googleAnalyticsId
+      ? [
+          { src: `https://www.googletagmanager.com/gtag/js?id=${business.googleAnalyticsId}`, async: true },
+          { children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${business.googleAnalyticsId}');window.addEventListener('nightowls:analytics',function(e){gtag('event',e.detail&&e.detail.event||'interaction');});document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[data-track]');if(t)gtag('event',t.getAttribute('data-track'),{service:t.getAttribute('data-service')||undefined});});` },
+        ]
+      : [],
   }),
   shellComponent: RootShell,
   component: RootComponent,
