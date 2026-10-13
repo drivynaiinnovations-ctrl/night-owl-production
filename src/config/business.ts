@@ -1,10 +1,10 @@
-/** Replace only verified business details here. Empty siteUrl until a public domain exists. */
+/** Verified Night Owls Service business details. */
 export const business = {
   name: 'Night Owls Service',
-  phone: '[BUSINESS PHONE]',
-  email: '[BUSINESS EMAIL]',
-  serviceArea: '[SERVICE AREA]',
-  hours: '[BUSINESS HOURS]',
+  phone: '(908) 391-3315',
+  email: 'happy@callnightowls.com',
+  serviceArea: 'DMV area',
+  hours: '8:00 AM–6:00 PM',
   siteUrl: '',
 };
 export const configured = (value: string) => Boolean(value.trim()) && !value.includes('[');
