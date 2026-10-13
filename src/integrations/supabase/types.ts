@@ -14,7 +14,66 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      service_requests: {
+        Row: {
+          city: string
+          company: string
+          consent: boolean
+          created_at: string
+          description: string
+          email: string
+          full_name: string
+          id: string
+          phone: string
+          photo_paths: string[]
+          preferred_contact: string
+          preferred_date: string | null
+          service_address: string
+          service_needed: string
+          state: string
+          urgency: string
+          zip: string
+        }
+        Insert: {
+          city: string
+          company: string
+          consent: boolean
+          created_at?: string
+          description: string
+          email: string
+          full_name: string
+          id?: string
+          phone: string
+          photo_paths?: string[]
+          preferred_contact: string
+          preferred_date?: string | null
+          service_address: string
+          service_needed: string
+          state: string
+          urgency: string
+          zip: string
+        }
+        Update: {
+          city?: string
+          company?: string
+          consent?: boolean
+          created_at?: string
+          description?: string
+          email?: string
+          full_name?: string
+          id?: string
+          phone?: string
+          photo_paths?: string[]
+          preferred_contact?: string
+          preferred_date?: string | null
+          service_address?: string
+          service_needed?: string
+          state?: string
+          urgency?: string
+          zip?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
