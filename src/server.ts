@@ -18,6 +18,16 @@ async function getServerEntry(): Promise<ServerEntry> {
   return serverEntryPromise;
 }
 
+function redirectWwwToCanonical(request: Request): Response | undefined {
+  const url = new URL(request.url);
+  if (url.hostname.toLowerCase() !== "www.callnightowls.com") return undefined;
+
+  url.protocol = "https:";
+  url.hostname = "callnightowls.com";
+  url.port = "";
+  return Response.redirect(url.toString(), 308);
+}
+
 // h3 swallows in-handler throws into a normal 500 Response with body
 // {"unhandled":true,"message":"HTTPError"} — try/catch alone never fires for those.
 async function normalizeCatastrophicSsrResponse(response: Response): Promise<Response> {
@@ -46,6 +56,9 @@ function isH3SwallowedErrorBody(body: string): boolean {
 
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    const canonicalRedirect = redirectWwwToCanonical(request);
+    if (canonicalRedirect) return canonicalRedirect;
+
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
