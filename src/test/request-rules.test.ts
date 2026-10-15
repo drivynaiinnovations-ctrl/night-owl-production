@@ -7,7 +7,7 @@ describe('Service request rules',()=>{
  it('accepts routine, soon and urgent only',()=>{for(const urgency of ['routine','soon','urgent'])expect(requestSchema.safeParse({...request,urgency}).success).toBe(true);expect(requestSchema.safeParse({...request,urgency:'emergency-guarantee'}).success).toBe(false);});
  it('requires consent before saving a request',()=>{expect(requestSchema.safeParse({...request,consent:false}).success).toBe(false);});
  it('allows only phone or email as contact preference',()=>{expect(requestSchema.safeParse({...request,preferred_contact:'sms'}).success).toBe(false);expect(requestSchema.safeParse({...request,preferred_contact:'phone'}).success).toBe(true);});
- it('uses the verified business contact details',()=>{expect(business.phone).toBe('(240) 539-9609');expect(business.email).toBe('happy@callnightowls.com');expect(phoneHref()).toBe('tel:9083913315');});
+ it('uses the verified business contact details',()=>{expect(business.phone).toBe('(240) 539-9609');expect(business.email).toBe('happy@callnightowls.com');expect(phoneHref()).toBe('tel:2405399609');});
  it('rejects non-image and oversized photo uploads',()=>{expect(validPhoto({type:'image/jpeg',size:15*1024*1024})).toBe(true);expect(validPhoto({type:'image/jpeg',size:15*1024*1024+1})).toBe(false);expect(validPhoto({type:'text/html',size:100})).toBe(false);});
  it('rejects a populated spam honeypot',()=>{expect(requestSchema.safeParse({...request,website:'spam'}).success).toBe(false);});
 });
