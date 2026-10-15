@@ -1,6 +1,6 @@
-/** Verified Night Owls Service business details. Values wrapped in [brackets] are unconfirmed and stay hidden until replaced. */
+/** Verified Night Owls Commercial Services business details. Values wrapped in [brackets] are unconfirmed and stay hidden until replaced. */
 export const business = {
-  name: 'Night Owls Service',
+  name: 'Night Owls Commercial Services',
   phone: '(908) 391-3315',
   email: 'happy@callnightowls.com',
   serviceArea: 'Washington DC, Maryland & Northern Virginia',

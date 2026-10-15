@@ -19,7 +19,7 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <p className="eyebrow justify-center mb-6">Night Owls Service · 404</p><h1 className="text-5xl font-medium text-foreground">A wrong turn.</h1>
+        <p className="eyebrow justify-center mb-6">Night Owls Commercial Services · 404</p><h1 className="text-5xl font-medium text-foreground">A wrong turn.</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">Let’s get you back on track.</h2>
         <p className="mt-2 text-sm text-muted-foreground">
           The page you're looking for doesn't exist or has been moved.
@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { property: "og:site_name", content: "Night Owls Service" },
+      { property: "og:site_name", content: "Night Owls Commercial Services" },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },

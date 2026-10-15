@@ -1,6 +1,6 @@
-# Night Owls Service
+# Night Owls Commercial Services
 
-Production website for Night Owls Service (https://callnightowls.com), commercial property services across Washington DC, Maryland, and Northern Virginia.
+Production website for Night Owls Commercial Services (https://callnightowls.com), commercial property services across Washington DC, Maryland, and Northern Virginia.
 
 Standalone TanStack Start (React) app built with Vite and deployed as a Cloudflare Worker. No Lovable or Supabase dependencies.
 
