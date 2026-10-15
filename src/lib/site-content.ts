@@ -4,6 +4,10 @@ import cleaning from '@/assets/exterior-cleaning.jpg';
 import parking from '@/assets/parking-lot.jpg';
 import { DoorOpen, Signpost, Droplets, ParkingSquare } from 'lucide-react';
 import { subServices } from '@/lib/sub-services';
+import doorsHero from '@/assets/heroes/doors.jpg';
+import signageHero from '@/assets/heroes/signage.jpg';
+import cleaningHero from '@/assets/heroes/cleaning.jpg';
+import parkingHero from '@/assets/heroes/parking.jpg';
 export const services = [
  { slug: 'commercial-doors', value: 'doors', title: 'Commercial Door Services', short: 'Commercial doors', icon: DoorOpen, image: doors, alt: 'Commercial glass entrance with metal handles and door closers', summary: 'Keep entrances working. Keep business moving.', description: 'Repairs, adjustments, installations, and preventive maintenance for the doors your business depends on.', items: ['Door repairs and adjustments','New door installations','Closers, hinges, and locks','Panic hardware','Storefront entrances','Preventive maintenance'], detail: 'A sticking entrance, worn closer, or damaged hinge can interrupt daily operations. We coordinate the right service professionals for your commercial doors, with a clear scope and one point of contact.' },
  { slug: 'commercial-signage', value: 'signage', title: 'Commercial Signage', short: 'Commercial signage', icon: Signpost, image: property, alt: 'Illuminated exterior sign area above a commercial storefront', summary: 'Make the right impression. In every location.', description: 'Installation, replacement, and removal of the signage that helps customers find their way.', items: ['Sign installation and replacement','Sign removal','Directional signage','Window graphics','Exterior signs','Multi-location rollouts'], detail: 'From updated window graphics to a coordinated exterior sign rollout, we help organize the installation details, site requirements, and service professionals across your locations.' },
@@ -11,14 +15,56 @@ export const services = [
  { slug: 'parking-lot-care', value: 'parking-lot-care', title: 'Parking-Lot Care', short: 'Parking-lot care', icon: ParkingSquare, image: parking, alt: 'Clean commercial parking lot with clear markings, wheel stops, and bollards', summary: 'Care that starts before the front door.', description: 'Scheduled sweeping, clear markings, and practical upkeep for commercial parking areas.', items: ['Scheduled sweeping','Litter pickup','Parking-lot striping','ADA markings','Bollards and wheel stops','Minor upkeep'], detail: 'Parking areas are part of the customer experience. We coordinate one-time improvements and recurring care, with attention to traffic, site access, and the scope of your property.' },
 ] as const;
 export const industries = [
- ['Property & facility management','Coordinate maintenance across tenants, buildings, and busy schedules.'],
- ['Retail & restaurants','Keep entrances, signs, and customer-facing spaces ready for business.'],
- ['Commercial landlords','Manage turnovers, common areas, and ongoing property care.'],
- ['Offices & warehouses','Maintain working entrances and practical, clean exterior spaces.'],
- ['Contractors','Coordinate commercial service needs alongside your project scope.'],
- ['Franchise & multi-location','Bring a consistent point of contact to work across multiple sites.'],
+ ['Office buildings & business parks','Lobby entrances, suite doors, building and lobby signs, and clean, safe grounds for tenants and visitors.'],
+ ['Property & facility management','One point of contact for maintenance across tenants, buildings, and busy schedules.'],
+ ['Medical & professional offices','Accessible entrances, clear wayfinding, and a well-kept exterior that patients and clients notice.'],
+ ['Retail & shopping centers','Working storefronts, visible signs, and clean walkways and parking for customers.'],
+ ['Restaurants','Entry and back-of-house doors, signs, patios, and dumpster pads kept in shape.'],
+ ['Warehouses & industrial','Steel and service doors, safety markings, bollards, and lot upkeep for busy sites.'],
+ ['Apartment & mixed-use communities','Common-area doors, monument signs, and grounds that keep residents and retail tenants happy.'],
+ ['Franchise & multi-location','Consistent service and sign rollouts across many sites with one accountable contact.'],
 ];
 export const process = [ ['Tell us what you need','Share the property, the issue, and the scope. Photos help us understand the job.'], ['We coordinate the right crew','We align the service professionals, access details, and work requirements.'], ['The work gets handled','Your point of contact keeps communication clear from coordination through completion.'] ];
+/** Per-service landing page content: each main service reads like its own business. */
+export const serviceDetails = {
+ 'commercial-doors': {
+  hero: doorsHero, heroAlt: 'Illuminated glass entrance doors of a modern office building at night',
+  headline: 'Commercial doors that open, close, and lock. Every time.',
+  intro: 'From office lobby entrances to warehouse service doors, Night Owls Commercial Services keeps commercial doors working across DC, Maryland, and Northern Virginia. Repairs, hardware, automatic operators, and full replacements, coordinated through one point of contact.',
+  highlights: ['Lobby to loading dock','Repairs, hardware & new installs','Automatic & ADA operators','One-time or recurring maintenance'],
+  audiences: ['Office buildings & business parks','Medical & professional offices','Retail & shopping centers','Warehouses & flex space','Restaurants','Apartment & mixed-use communities'],
+  process: [['Tell us about the door','Share the property, which doors, and what they’re doing wrong. Photos of the door, closer, and hardware help most.'],['We scope the fix','We confirm whether it’s an adjustment, a hardware replacement, or a new door, and schedule around your building’s hours.'],['Doors back in service','The work gets done and you get a clear update, with recurring maintenance available for every door on your property.']],
+  project: { title: 'Commercial office building', summary: 'We recently completed door service for a commercial office building, part of our growing work with office properties and business parks across the DMV.' },
+  faqs: [['What kinds of commercial doors do you service?','Glass storefront and lobby entrances, automatic sliding and swing doors, hollow metal and steel doors, fire-rated stairwell doors, interior suite doors, and back-of-house service doors.'],['Do you only work on retail storefronts?','No. Office buildings, medical offices, warehouses, restaurants, and multi-family properties are all part of our work, along with retail.'],['Can you maintain every door in our building on a schedule?','Yes. Preventive maintenance programs cover inspections and adjustments for every door at one property or across a portfolio.'],['Do you handle ADA door openers?','Yes. We coordinate automatic door operators and ADA push-button openers, including service on existing operators and new installations.']],
+ },
+ 'commercial-signage': {
+  hero: signageHero, heroAlt: 'Modern office building lit up at night',
+  headline: 'Signs that get your building noticed.',
+  intro: 'Design, fabrication, permits, and installation for exterior and interior signs across the DMV. Channel letters, monument and pylon signs, lobby and suite signs, LED message centers, wayfinding, and vinyl, handled from first sketch to final install.',
+  highlights: ['Design, permits & installation','Illuminated & non-illuminated','Interior lobby & suite signs','Single sites to multi-location rollouts'],
+  audiences: ['Office buildings & business parks','Retail & shopping centers','Restaurants','Medical & professional offices','Apartment communities','Franchise & multi-location brands'],
+  process: [['Survey & design','We review the site, sign criteria, and visibility from the road, then prepare design proofs for your approval.'],['Approvals & permits','Landlord approvals and sign and electrical permits are coordinated for your jurisdiction before anything is built.'],['Fabrication & installation','Your sign is fabricated and installed, with removal of old signs handled in the same project.']],
+  faqs: [['What types of signs do you provide?','Channel letters, building identification signs, monument and pylon signs, LED message centers, lobby and suite signs, wayfinding and ADA signs, window graphics, vinyl, and awnings.'],['Do you handle sign permits?','Yes. Sign and electrical permits are coordinated as part of the project for DC, Maryland, and Northern Virginia jurisdictions.'],['How long does a new illuminated sign take?','Illuminated signs typically take several weeks from approved design through permitting and fabrication. We confirm the timeline during scoping.'],['Can you install signs made by another company?','Yes. Installation and removal can be coordinated for signs fabricated elsewhere, including national brand rollouts.']],
+ },
+ 'exterior-cleaning': {
+  hero: cleaningHero, heroAlt: 'Worker pressure washing a sidewalk outside a commercial building',
+  headline: 'A cleaner property makes a better first impression.',
+  intro: 'Pressure washing and exterior cleaning for office buildings, shopping centers, restaurants, and multi-tenant properties across the DMV. Entries, sidewalks, facades, dumpster pads, awnings, and signs, cleaned on your schedule.',
+  highlights: ['Entries, walkways & facades','Graffiti & gum removal','Dumpster pads & enclosures','Early-morning & after-hours options'],
+  audiences: ['Office buildings & business parks','Retail & shopping centers','Restaurants','Medical offices','Apartment & mixed-use communities','Warehouses & industrial'],
+  process: [['Walk us through the site','Tell us which areas need cleaning, the surfaces involved, and when the property is quietest.'],['We plan the right method','Surface-appropriate cleaning is scoped for concrete, brick, metal, fabric, and painted surfaces.'],['Clean, then keep it clean','Start with a one-time cleaning and add a recurring schedule so the property stays presentable.']],
+  faqs: [['Do you clean office building entrances and plazas?','Yes. Entries, plazas, walkways, and building facades at office buildings and business parks are a regular part of our work.'],['Can cleaning happen outside business hours?','Scheduling is discussed before work is confirmed, including early-morning and after-close options where available.'],['Do you remove graffiti?','Yes. Graffiti and gum removal is scoped for the surface, whether brick, concrete, metal, or painted walls.'],['Do you offer recurring cleaning?','Yes. Monthly, quarterly, or custom schedules can be set up for one property or several.']],
+ },
+ 'parking-lot-care': {
+  hero: parkingHero, heroAlt: 'Aerial view of an office building and parking lot at night',
+  headline: 'Parking lots that look cared for and work safely.',
+  intro: 'Sweeping, striping, ADA markings, bollards, wheel stops, and ongoing upkeep for office parks, shopping centers, and commercial properties across DC, Maryland, and Northern Virginia.',
+  highlights: ['Scheduled sweeping & litter pickup','Striping & ADA markings','Bollards & wheel stops','Office parks to shopping centers'],
+  audiences: ['Office buildings & business parks','Retail & shopping centers','Medical offices','Warehouses & industrial','Apartment communities','Restaurants'],
+  process: [['Tell us about the lot','Share the property, the lot size, and what it needs: cleaning, new lines, signs, or repairs.'],['We plan around traffic','Work is phased and scheduled to keep the lot usable for tenants and customers where possible.'],['Keep it maintained','Set up recurring sweeping and periodic restriping so the lot stays clean, clear, and compliant.']],
+  faqs: [['Do you service office park parking lots?','Yes. Office parks and business campuses are a core part of our parking-lot work, along with retail centers and industrial sites.'],['How often should a lot be restriped?','Many commercial lots need restriping every one to two years, depending on traffic and weather.'],['Can you add or fix ADA parking spaces?','Yes. Accessible stalls, access aisles, symbols, and signs can be marked, restriped, or added.'],['Do you offer recurring sweeping?','Yes. Daily, weekly, or monthly sweeping and litter pickup can be scheduled.']],
+ },
+} as const;
 export const serviceAreas = [
  { slug: 'washington-dc', name: 'Washington, DC', state: 'DC', region: 'District of Columbia', placeType: 'City', places: ['Downtown','Capitol Hill','Navy Yard','NoMa','Georgetown','Columbia Heights','Union Market','Anacostia','Foggy Bottom','Shaw'], intro: 'Storefronts, office lobbies, and mixed-use buildings across the District see heavy foot traffic and tight access windows. We coordinate commercial door repairs, signage, exterior cleaning, and parking-area care around your hours, loading zones, and building rules.' },
  { slug: 'montgomery-county-md', name: 'Montgomery County, MD', state: 'MD', region: 'Maryland', placeType: 'AdministrativeArea', places: ['Bethesda','Rockville','Silver Spring','Gaithersburg','Germantown','Wheaton','Takoma Park','Olney','Potomac','Chevy Chase'], intro: 'From Bethesda office buildings to Rockville and Gaithersburg retail centers, Montgomery County properties need entrances that work and exteriors that stay presentable. One request covers doors, signs, cleaning, and lot upkeep across your sites.' },
