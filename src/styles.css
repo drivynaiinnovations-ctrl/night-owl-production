@@ -276,3 +276,18 @@ main:has(.closing-cta) + footer .footer-cta { display:none; }
 .industry-photo { aspect-ratio:16/10; overflow:hidden; } .industry-photo img { width:100%; height:100%; object-fit:cover; transition:transform .45s; } .industry-card:hover .industry-photo img { transform:scale(1.04); }
 @media(max-width:1100px){ .industry-deck { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media(max-width:560px){ .industry-deck { grid-template-columns:1fr; } }
+/* Hero video slideshow (desktop only) */
+.hero-media, .hero-layer { position:absolute; inset:0; z-index:-3; overflow:hidden; }
+.hero-layer { opacity:0; transition:opacity .9s ease; } .hero-layer.is-active { opacity:1; }
+.hero-layer .hero-image { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.kenburns { animation:kenburns 7s ease-out both; } @keyframes kenburns { from { transform:scale(1); } to { transform:scale(1.08); } }
+.hero-slide-controls { position:absolute; left:0; right:0; bottom:26px; width:min(1200px, calc(100% - 96px)); margin-inline:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:24px; }
+.hero-tabs { display:flex; gap:18px; flex-wrap:wrap; }
+.hero-tab { display:flex; flex-direction:column; gap:8px; min-width:120px; text-align:left; font-size:12px; font-weight:600; color:rgb(255 255 255 / .65); } .hero-tab:hover, .hero-tab.is-active { color:#fff; }
+.hero-tab-bar { display:block; height:3px; border-radius:2px; background:rgb(255 255 255 / .25); overflow:hidden; } .hero-tab-bar span { display:block; height:100%; width:0; background:var(--brand-blue); }
+.hero-tab.is-active .hero-tab-bar span { width:100%; animation:tabfill linear both; } @keyframes tabfill { from { width:0; } to { width:100%; } }
+.hero-slide-link { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:var(--brand-blue); white-space:nowrap; } .hero-slide-link:hover { color:#fff; }
+.hero-pause { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; border:1px solid rgb(255 255 255 / .4); color:#fff; } .hero-pause:hover { background:rgb(255 255 255 / .12); }
+@media(max-width:1100px){ .hero-slide-controls { flex-direction:column; align-items:flex-start; } .hero-tab { min-width:96px; } }
+@media(max-width:767px){ .hero-media, .hero-slide-controls { display:none !important; } }
+@media(prefers-reduced-motion:reduce){ .kenburns { animation:none; } }
