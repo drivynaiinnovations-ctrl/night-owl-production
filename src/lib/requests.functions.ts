@@ -25,12 +25,12 @@ export const submitRequest = createServerFn({method:'POST'})
     ...photos,
    ]);
    const service = serviceChoices.find(([value]) => value === r.service_needed)?.[1] ?? r.service_needed;
-   await notifyNewRequest(env, `New service request: ${service} (${r.urgency}) - ${r.company}`, [
-    `${r.full_name}, ${r.company}`, `Phone: ${r.phone}`, `Email: ${r.email}`, `Prefers: ${r.preferred_contact}`, '',
+   await notifyNewRequest(env, `New service request: ${service} (${r.urgency}) - ${r.company || r.full_name} (${r.zip})`, [
+    `${r.full_name}${r.company ? `, ${r.company}` : ''}`, `Phone: ${r.phone}`, `Email: ${r.email || 'not provided'}`, `Prefers: ${r.preferred_contact}`, '',
     `Service: ${service}`, `Urgency: ${r.urgency}`, `Preferred date: ${preferred_date || 'none'}`,
-    `Address: ${r.service_address}, ${r.city}, ${r.state} ${r.zip}`, '', r.description, '',
+    `Address: ${[r.service_address, r.city, [r.state, r.zip].filter(Boolean).join(' ')].filter(Boolean).join(', ')}`, '', r.description || '(no description; quick request)', '',
     `Photos: ${photos.length}`, `View: https://callnightowls.com/admin/requests/${id}`,
-   ].join('\n'), r.email);
+   ].join('\n'), r.email || undefined);
    return {ok:true as const,reference:id};
   } catch (error) {
    console.error('Service request failed', error);

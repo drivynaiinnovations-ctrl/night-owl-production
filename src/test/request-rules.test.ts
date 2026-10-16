@@ -10,4 +10,6 @@ describe('Service request rules',()=>{
  it('uses the verified business contact details',()=>{expect(business.phone).toBe('(240) 539-9609');expect(business.email).toBe('happy@callnightowls.com');expect(phoneHref()).toBe('tel:2405399609');});
  it('rejects non-image and oversized photo uploads',()=>{expect(validPhoto({type:'image/jpeg',size:15*1024*1024})).toBe(true);expect(validPhoto({type:'image/jpeg',size:15*1024*1024+1})).toBe(false);expect(validPhoto({type:'text/html',size:100})).toBe(false);});
  it('rejects a populated spam honeypot',()=>{expect(requestSchema.safeParse({...request,website:'spam'}).success).toBe(false);});
+ it('accepts a quick request with only name, phone, service, ZIP, and consent',()=>{const quick=requestSchema.safeParse({full_name:'Test Person',phone:'2405550100',service_needed:'doors',zip:'20850',consent:true});expect(quick.success).toBe(true);if(quick.success){expect(quick.data.urgency).toBe('routine');expect(quick.data.preferred_contact).toBe('phone');}});
+ it('requires an email only when email is the preferred contact',()=>{expect(requestSchema.safeParse({...request,email:'',preferred_contact:'email'}).success).toBe(false);expect(requestSchema.safeParse({...request,email:'',preferred_contact:'phone'}).success).toBe(true);expect(requestSchema.safeParse({...request,email:'not-an-email'}).success).toBe(false);});
 });

@@ -41,3 +41,7 @@ export function breadcrumbSchema(items: [string, string][]) {
 export function faqSchema(items: readonly (readonly [string, string])[]) {
  return {'@context':'https://schema.org','@type':'FAQPage',mainEntity:items.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))};
 }
+
+export function articleSchema(g: { title: string; description: string; published: string; image: string }, path: string) {
+ return {'@context':'https://schema.org','@type':'Article',headline:g.title,description:g.description,datePublished:g.published,dateModified:g.published,mainEntityOfPage:absoluteUrl(path),image:ogImage,author:{'@type':'Organization','@id':businessId,name:business.name,url:base},publisher:{'@type':'Organization','@id':businessId,name:business.name,logo:{'@type':'ImageObject',url:absoluteUrl('/logo.png')}}};
+}

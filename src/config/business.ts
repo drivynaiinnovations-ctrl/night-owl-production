@@ -23,6 +23,11 @@ export const business = {
   socialProfiles: [] as string[],
   /** Trust claims shown in the footer. Only add statements that are true and can be backed up, e.g. 'Licensed & insured', 'Serving the DMV since 2024'. */
   trustBadges: [] as string[],
+  /** Google rating shown as a badge once real reviews exist, e.g. '4.9' and 23. Leave '' / 0 to hide. */
+  googleRating: '',
+  googleReviewCount: 0,
+  /** Real customer quotes only, with permission. Shown on the homepage. e.g. { name: 'Jane D.', role: 'Property Manager, Rockville', quote: '...' } */
+  testimonials: [] as { name: string; role?: string; quote: string }[],
 };
 export const configured = (value: string) => Boolean(value.trim()) && !value.includes('[');
 export const phoneHref = () => configured(business.phone) && /^\+?[\d\s().-]{7,25}$/.test(business.phone) ? `tel:${business.phone.replace(/[^\d+]/g, '')}` : undefined;

@@ -14,13 +14,19 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as GuidesRouteImport } from './routes/guides'
 import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as RequestServiceRouteImport } from './routes/request-service'
 import { Route as ServiceAreasRouteImport } from './routes/service-areas'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SiteMapRouteImport } from './routes/site-map'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as GuidesIndexRouteImport } from './routes/guides.index'
+import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
+import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
+import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
 import { Route as ServiceAreasIndexRouteImport } from './routes/service-areas.index'
 import { Route as ServiceAreasSlugRouteImport } from './routes/service-areas.$slug'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
@@ -55,6 +61,11 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuidesRoute = GuidesRouteImport.update({
+  id: '/guides',
+  path: '/guides',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndustriesRoute = IndustriesRouteImport.update({
   id: '/industries',
   path: '/industries',
@@ -63,6 +74,11 @@ const IndustriesRoute = IndustriesRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RequestServiceRoute = RequestServiceRouteImport.update({
@@ -89,6 +105,26 @@ const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
   getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesIndexRoute = GuidesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => GuidesRoute,
+} as any)
+const GuidesSlugRoute = GuidesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => GuidesRoute,
+} as any)
+const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProjectsRoute,
+} as any)
+const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ProjectsRoute,
 } as any)
 const ServiceAreasIndexRoute = ServiceAreasIndexRouteImport.update({
   id: '/',
@@ -139,19 +175,25 @@ export interface FileRoutesByFullPath {
   '/accessibility': typeof AccessibilityRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/guides': typeof GuidesRouteWithChildren
   '/industries': typeof IndustriesRoute
   '/privacy': typeof PrivacyRoute
+  '/projects': typeof ProjectsRouteWithChildren
   '/request-service': typeof RequestServiceRoute
   '/service-areas': typeof ServiceAreasRouteWithChildren
   '/services': typeof ServicesRouteWithChildren
   '/site-map': typeof SiteMapRoute
   '/terms': typeof TermsRoute
+  '/guides/$slug': typeof GuidesSlugRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
   '/service-areas/$slug': typeof ServiceAreasSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/commercial-doors': typeof ServicesCommercialDoorsRoute
   '/services/commercial-signage': typeof ServicesCommercialSignageRoute
   '/services/exterior-cleaning': typeof ServicesExteriorCleaningRoute
   '/services/parking-lot-care': typeof ServicesParkingLotCareRoute
+  '/guides/': typeof GuidesIndexRoute
+  '/projects/': typeof ProjectsIndexRoute
   '/service-areas/': typeof ServiceAreasIndexRoute
   '/services/': typeof ServicesIndexRoute
 }
@@ -166,12 +208,16 @@ export interface FileRoutesByTo {
   '/request-service': typeof RequestServiceRoute
   '/site-map': typeof SiteMapRoute
   '/terms': typeof TermsRoute
+  '/guides/$slug': typeof GuidesSlugRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
   '/service-areas/$slug': typeof ServiceAreasSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/commercial-doors': typeof ServicesCommercialDoorsRoute
   '/services/commercial-signage': typeof ServicesCommercialSignageRoute
   '/services/exterior-cleaning': typeof ServicesExteriorCleaningRoute
   '/services/parking-lot-care': typeof ServicesParkingLotCareRoute
+  '/guides': typeof GuidesIndexRoute
+  '/projects': typeof ProjectsIndexRoute
   '/service-areas': typeof ServiceAreasIndexRoute
   '/services': typeof ServicesIndexRoute
 }
@@ -182,19 +228,25 @@ export interface FileRoutesById {
   '/accessibility': typeof AccessibilityRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/guides': typeof GuidesRouteWithChildren
   '/industries': typeof IndustriesRoute
   '/privacy': typeof PrivacyRoute
+  '/projects': typeof ProjectsRouteWithChildren
   '/request-service': typeof RequestServiceRoute
   '/service-areas': typeof ServiceAreasRouteWithChildren
   '/services': typeof ServicesRouteWithChildren
   '/site-map': typeof SiteMapRoute
   '/terms': typeof TermsRoute
+  '/guides/$slug': typeof GuidesSlugRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
   '/service-areas/$slug': typeof ServiceAreasSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/commercial-doors': typeof ServicesCommercialDoorsRoute
   '/services/commercial-signage': typeof ServicesCommercialSignageRoute
   '/services/exterior-cleaning': typeof ServicesExteriorCleaningRoute
   '/services/parking-lot-care': typeof ServicesParkingLotCareRoute
+  '/guides/': typeof GuidesIndexRoute
+  '/projects/': typeof ProjectsIndexRoute
   '/service-areas/': typeof ServiceAreasIndexRoute
   '/services/': typeof ServicesIndexRoute
 }
@@ -206,19 +258,25 @@ export interface FileRouteTypes {
     | '/accessibility'
     | '/contact'
     | '/faq'
+    | '/guides'
     | '/industries'
     | '/privacy'
+    | '/projects'
     | '/request-service'
     | '/service-areas'
     | '/services'
     | '/site-map'
     | '/terms'
+    | '/guides/$slug'
+    | '/projects/$slug'
     | '/service-areas/$slug'
     | '/services/$slug'
     | '/services/commercial-doors'
     | '/services/commercial-signage'
     | '/services/exterior-cleaning'
     | '/services/parking-lot-care'
+    | '/guides/'
+    | '/projects/'
     | '/service-areas/'
     | '/services/'
   fileRoutesByTo: FileRoutesByTo
@@ -233,12 +291,16 @@ export interface FileRouteTypes {
     | '/request-service'
     | '/site-map'
     | '/terms'
+    | '/guides/$slug'
+    | '/projects/$slug'
     | '/service-areas/$slug'
     | '/services/$slug'
     | '/services/commercial-doors'
     | '/services/commercial-signage'
     | '/services/exterior-cleaning'
     | '/services/parking-lot-care'
+    | '/guides'
+    | '/projects'
     | '/service-areas'
     | '/services'
   id:
@@ -248,19 +310,25 @@ export interface FileRouteTypes {
     | '/accessibility'
     | '/contact'
     | '/faq'
+    | '/guides'
     | '/industries'
     | '/privacy'
+    | '/projects'
     | '/request-service'
     | '/service-areas'
     | '/services'
     | '/site-map'
     | '/terms'
+    | '/guides/$slug'
+    | '/projects/$slug'
     | '/service-areas/$slug'
     | '/services/$slug'
     | '/services/commercial-doors'
     | '/services/commercial-signage'
     | '/services/exterior-cleaning'
     | '/services/parking-lot-care'
+    | '/guides/'
+    | '/projects/'
     | '/service-areas/'
     | '/services/'
   fileRoutesById: FileRoutesById
@@ -271,8 +339,10 @@ export interface RootRouteChildren {
   AccessibilityRoute: typeof AccessibilityRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
+  GuidesRoute: typeof GuidesRouteWithChildren
   IndustriesRoute: typeof IndustriesRoute
   PrivacyRoute: typeof PrivacyRoute
+  ProjectsRoute: typeof ProjectsRouteWithChildren
   RequestServiceRoute: typeof RequestServiceRoute
   ServiceAreasRoute: typeof ServiceAreasRouteWithChildren
   ServicesRoute: typeof ServicesRouteWithChildren
@@ -317,6 +387,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guides': {
+      id: '/guides'
+      path: '/guides'
+      fullPath: '/guides'
+      preLoaderRoute: typeof GuidesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/industries': {
       id: '/industries'
       path: '/industries'
@@ -329,6 +406,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/request-service': {
@@ -365,6 +449,34 @@ declare module '@tanstack/react-router' {
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/guides/': {
+      id: '/guides/'
+      path: '/'
+      fullPath: '/guides/'
+      preLoaderRoute: typeof GuidesIndexRouteImport
+      parentRoute: typeof GuidesRoute
+    }
+    '/guides/$slug': {
+      id: '/guides/$slug'
+      path: '/$slug'
+      fullPath: '/guides/$slug'
+      preLoaderRoute: typeof GuidesSlugRouteImport
+      parentRoute: typeof GuidesRoute
+    }
+    '/projects/': {
+      id: '/projects/'
+      path: '/'
+      fullPath: '/projects/'
+      preLoaderRoute: typeof ProjectsIndexRouteImport
+      parentRoute: typeof ProjectsRoute
+    }
+    '/projects/$slug': {
+      id: '/projects/$slug'
+      path: '/$slug'
+      fullPath: '/projects/$slug'
+      preLoaderRoute: typeof ProjectsSlugRouteImport
+      parentRoute: typeof ProjectsRoute
     }
     '/service-areas/': {
       id: '/service-areas/'
@@ -425,6 +537,33 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface GuidesRouteChildren {
+  GuidesSlugRoute: typeof GuidesSlugRoute
+  GuidesIndexRoute: typeof GuidesIndexRoute
+}
+
+const GuidesRouteChildren: GuidesRouteChildren = {
+  GuidesSlugRoute: GuidesSlugRoute,
+  GuidesIndexRoute: GuidesIndexRoute,
+}
+
+const GuidesRouteWithChildren =
+  GuidesRoute._addFileChildren(GuidesRouteChildren)
+
+interface ProjectsRouteChildren {
+  ProjectsSlugRoute: typeof ProjectsSlugRoute
+  ProjectsIndexRoute: typeof ProjectsIndexRoute
+}
+
+const ProjectsRouteChildren: ProjectsRouteChildren = {
+  ProjectsSlugRoute: ProjectsSlugRoute,
+  ProjectsIndexRoute: ProjectsIndexRoute,
+}
+
+const ProjectsRouteWithChildren = ProjectsRoute._addFileChildren(
+  ProjectsRouteChildren,
+)
+
 interface ServiceAreasRouteChildren {
   ServiceAreasSlugRoute: typeof ServiceAreasSlugRoute
   ServiceAreasIndexRoute: typeof ServiceAreasIndexRoute
@@ -467,8 +606,10 @@ const rootRouteChildren: RootRouteChildren = {
   AccessibilityRoute: AccessibilityRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
+  GuidesRoute: GuidesRouteWithChildren,
   IndustriesRoute: IndustriesRoute,
   PrivacyRoute: PrivacyRoute,
+  ProjectsRoute: ProjectsRouteWithChildren,
   RequestServiceRoute: RequestServiceRoute,
   ServiceAreasRoute: ServiceAreasRouteWithChildren,
   ServicesRoute: ServicesRouteWithChildren,
