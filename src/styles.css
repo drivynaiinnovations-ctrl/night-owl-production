@@ -215,5 +215,19 @@
 .mega-head { display:flex; align-items:center; gap:8px; font-weight:700; font-size:15px; color:var(--brand-navy); padding-bottom:10px; margin-bottom:8px; border-bottom:1px solid var(--border); } .mega-head:hover { color:var(--brand-ink); }
 .mega-item { display:block; padding:5px 0; font-size:14px; font-weight:500; color:var(--muted-foreground); } .mega-item:hover { color:var(--brand-ink); }
 .mega-foot { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-top:20px; padding-top:16px; border-top:1px solid var(--border); font-size:14px; }
-.footer-areas { margin-top:48px; padding-top:32px; border-top:1px solid var(--border); }
 .desktop-nav .mega-item { font-weight:500; color:var(--muted-foreground); } .desktop-nav .mega-item:hover { color:var(--brand-ink); } .desktop-nav .mega-head { font-weight:700; }
+
+/* Footer (Midnight Navy, reversed brand) */
+.site-footer { background:var(--brand-navy); color:#C9D3E3; }
+.footer-cta { background:#0D1B2E; border-bottom:1px solid rgb(255 255 255 / .08); }
+.footer-call { display:inline-flex; align-items:center; gap:8px; height:48px; padding:0 22px; border-radius:2px; border:1px solid rgb(255 255 255 / .35); color:#fff; font-weight:600; font-size:14px; } .footer-call:hover { background:rgb(255 255 255 / .08); }
+.footer-head { margin-bottom:16px; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#fff; }
+.footer-links { display:flex; flex-direction:column; gap:10px; font-size:14px; } .footer-links a:hover { color:#fff; }
+.footer-nap { display:flex; flex-direction:column; gap:8px; font-size:14px; } .footer-nap a:hover { color:#fff; }
+.footer-badge { display:inline-flex; align-items:center; gap:6px; padding:5px 10px; border:1px solid rgb(255 255 255 / .2); border-radius:999px; font-size:12px; color:#fff; }
+.footer-review { display:inline-flex; align-items:center; gap:6px; color:#FFD166; font-weight:600; } .footer-review:hover { color:#fff; }
+.footer-social { display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:rgb(255 255 255 / .08); color:#fff; } .footer-social:hover { background:var(--brand-blue); color:var(--brand-navy); }
+.site-footer .footer-areas { margin-top:48px; padding-top:32px; border-top:1px solid rgb(255 255 255 / .1); }
+.footer-legal { margin-top:40px; padding-top:24px; border-top:1px solid rgb(255 255 255 / .1); display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; font-size:12px; } .footer-legal a:hover { color:#fff; }
+.site-footer .wordmark-name, .site-footer .wordmark-service { color:#fff; }
+@media(min-width:640px){ .footer-links.two-col { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 20px; } }

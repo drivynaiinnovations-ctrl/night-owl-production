@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as IndustriesRouteImport } from './routes/industries'
@@ -18,6 +19,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RequestServiceRouteImport } from './routes/request-service'
 import { Route as ServiceAreasRouteImport } from './routes/service-areas'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SiteMapRouteImport } from './routes/site-map'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ServiceAreasIndexRouteImport } from './routes/service-areas.index'
 import { Route as ServiceAreasSlugRouteImport } from './routes/service-areas.$slug'
@@ -36,6 +38,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccessibilityRoute = AccessibilityRouteImport.update({
+  id: '/accessibility',
+  path: '/accessibility',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -71,6 +78,11 @@ const ServiceAreasRoute = ServiceAreasRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteMapRoute = SiteMapRouteImport.update({
+  id: '/site-map',
+  path: '/site-map',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TermsRoute = TermsRouteImport.update({
@@ -124,6 +136,7 @@ const ServicesParkingLotCareRoute = ServicesParkingLotCareRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accessibility': typeof AccessibilityRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/industries': typeof IndustriesRoute
@@ -131,6 +144,7 @@ export interface FileRoutesByFullPath {
   '/request-service': typeof RequestServiceRoute
   '/service-areas': typeof ServiceAreasRouteWithChildren
   '/services': typeof ServicesRouteWithChildren
+  '/site-map': typeof SiteMapRoute
   '/terms': typeof TermsRoute
   '/service-areas/$slug': typeof ServiceAreasSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
@@ -144,11 +158,13 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accessibility': typeof AccessibilityRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/industries': typeof IndustriesRoute
   '/privacy': typeof PrivacyRoute
   '/request-service': typeof RequestServiceRoute
+  '/site-map': typeof SiteMapRoute
   '/terms': typeof TermsRoute
   '/service-areas/$slug': typeof ServiceAreasSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
@@ -163,6 +179,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accessibility': typeof AccessibilityRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/industries': typeof IndustriesRoute
@@ -170,6 +187,7 @@ export interface FileRoutesById {
   '/request-service': typeof RequestServiceRoute
   '/service-areas': typeof ServiceAreasRouteWithChildren
   '/services': typeof ServicesRouteWithChildren
+  '/site-map': typeof SiteMapRoute
   '/terms': typeof TermsRoute
   '/service-areas/$slug': typeof ServiceAreasSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
@@ -185,6 +203,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/accessibility'
     | '/contact'
     | '/faq'
     | '/industries'
@@ -192,6 +211,7 @@ export interface FileRouteTypes {
     | '/request-service'
     | '/service-areas'
     | '/services'
+    | '/site-map'
     | '/terms'
     | '/service-areas/$slug'
     | '/services/$slug'
@@ -205,11 +225,13 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/accessibility'
     | '/contact'
     | '/faq'
     | '/industries'
     | '/privacy'
     | '/request-service'
+    | '/site-map'
     | '/terms'
     | '/service-areas/$slug'
     | '/services/$slug'
@@ -223,6 +245,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/accessibility'
     | '/contact'
     | '/faq'
     | '/industries'
@@ -230,6 +253,7 @@ export interface FileRouteTypes {
     | '/request-service'
     | '/service-areas'
     | '/services'
+    | '/site-map'
     | '/terms'
     | '/service-areas/$slug'
     | '/services/$slug'
@@ -244,6 +268,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AccessibilityRoute: typeof AccessibilityRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   IndustriesRoute: typeof IndustriesRoute
@@ -251,6 +276,7 @@ export interface RootRouteChildren {
   RequestServiceRoute: typeof RequestServiceRoute
   ServiceAreasRoute: typeof ServiceAreasRouteWithChildren
   ServicesRoute: typeof ServicesRouteWithChildren
+  SiteMapRoute: typeof SiteMapRoute
   TermsRoute: typeof TermsRoute
 }
 
@@ -268,6 +294,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accessibility': {
+      id: '/accessibility'
+      path: '/accessibility'
+      fullPath: '/accessibility'
+      preLoaderRoute: typeof AccessibilityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -317,6 +350,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-map': {
+      id: '/site-map'
+      path: '/site-map'
+      fullPath: '/site-map'
+      preLoaderRoute: typeof SiteMapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -424,6 +464,7 @@ const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AccessibilityRoute: AccessibilityRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
   IndustriesRoute: IndustriesRoute,
@@ -431,6 +472,7 @@ const rootRouteChildren: RootRouteChildren = {
   RequestServiceRoute: RequestServiceRoute,
   ServiceAreasRoute: ServiceAreasRouteWithChildren,
   ServicesRoute: ServicesRouteWithChildren,
+  SiteMapRoute: SiteMapRoute,
   TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport

@@ -17,8 +17,12 @@ export const business = {
   googleSiteVerification: '',
   /** GA4 measurement ID, e.g. G-XXXXXXX. */
   googleAnalyticsId: '',
-  /** Other official profiles (Facebook, LinkedIn, Yelp...) for schema sameAs. */
+  /** Google "write a review" link (Business Profile → Ask for reviews → copy link). */
+  googleReviewUrl: '',
+  /** Official social/directory profile URLs (Facebook, LinkedIn, Instagram, YouTube, Yelp, Nextdoor, BBB...). Shown in the footer and added to schema sameAs. */
   socialProfiles: [] as string[],
+  /** Trust claims shown in the footer. Only add statements that are true and can be backed up, e.g. 'Licensed & insured', 'Serving the DMV since 2024'. */
+  trustBadges: [] as string[],
 };
 export const configured = (value: string) => Boolean(value.trim()) && !value.includes('[');
 export const phoneHref = () => configured(business.phone) && /^\+?[\d\s().-]{7,25}$/.test(business.phone) ? `tel:${business.phone.replace(/[^\d+]/g, '')}` : undefined;
